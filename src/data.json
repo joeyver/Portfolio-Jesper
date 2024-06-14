@@ -1,0 +1,86 @@
+{
+    "user": {
+        "email": "234324@student.scalda.nl",
+        "linkedIn" : "https://www.linkedin.com/in/milan-van-der-burgh-606379237/",
+        "github": "https://github.com/Milanvanderburgh",
+        "twitter": "https://x.com/Snickerpad",
+        "instagram": "https://www.instagram.com/justmilan._/"
+    },
+    "settings": {
+        "maxProjects": 4
+    },
+    "projects": [
+        {
+            "image": "https://www.ijzendijke.eu/images/ondernemers/image002.jpg",
+            "image2": "projects/Unitron_HoofdPagina.png",
+            "image3": "projects/Unitron_KlantenPagina.png",
+            "image4": "projects/Unitron_Picture.png",
+            "alt": "Project Image",
+            "title": "RMA System",
+            "description": "An application to manage the Return Merchandise Authorizations (RMA) processes of the company.",
+            "pageDescription": "During my internship at Unitron, a well-known medical company, I created an application to simplify their Return Merchandise Authorizations (RMA) processes. I used Django and Python to build the system, making it efficient and easy to use. The work atmosphere at Unitron was pleasant, and the guidance was excellent, which contributed to my personal growth. My advice to other students is to stay true to yourself and focus on your own learning goals.",
+            "labels": "Internship, Python, Django, SQL, JavaScript, HTML/CSS, Bootstrap",
+            "link1": {
+                "name": "Unitron",
+                "link": "https://www.unitron.nl/"
+            },
+            "link2": {
+                "name": "LinkedIn Post",
+                "link": "https://www.linkedin.com/posts/unitron-group-bv_stage-scalda-unitrongroup-activity-7155875866340655105-pnhG?utm_source=combined_share_message&utm_medium=member_desktop"
+            }
+        },
+        {
+            "image": "projects/Pasimo_LoginPage.png",
+            "image2": "projects/Pasimo_Dashboard.png",
+            "image3": "projects/Pasimo_CohortPage.png",
+            "alt": "Project Image",
+            "title": "Pasimo",
+            "description": "With this application, students can scan their cards to clock in automatically, and teachers can manage their students.",
+            "pageDescription": "This project utilizes Java, Hibernate, and Struts2 to create an application that facilitates various functionalities for both students and teachers. Through this system, students have the ability to scan their identification cards, enabling automatic clock-ins. On the other hand, teachers are empowered with tools to effectively manage their students, overseeing attendance and other related tasks seamlessly.",
+            "labels": "Java, Hibernate, Struts2, SQL, JavaScript, HTML/CSS, Bootstrap",
+            "link1": {
+                "name": "Pasimo",
+                "link": "https://pasimo.delphinity.nl/security/showLogin"
+            }
+        },
+        {
+            "image": "projects/SlideHub_HoofdPagina.png",
+            "alt": "Project Image",
+            "title": "SlideHub",
+            "description": "This application allows you to create slides that can loop continuously on multiple TVs using a Raspberry Pi. This application is used inside or school and soon to be many more!",
+            "pageDescription": "This application, built using Java along with the Hibernate and Struts2 frameworks, enables you to create and manage slideshows that loop continuously on multiple TVs via Raspberry Pi devices. It provides a user-friendly interface for designing slides, complete with text, images, and other multimedia elements. Once the slides are created, they can be organized into a sequence and deployed to the connected TVs, ensuring seamless and synchronized display across all screens.",
+            "labels": "Java, Hibernate, Struts2, SQL, JavaScript, HTML/CSS, Bootstrap",
+            "link1": {
+                "name": "SlideHub",
+                "link": "http://slidehub.delphinity.nl/"
+            }
+        },
+        {
+            "image": "projects/QR-Goats_HoofdPagina.png",
+            "image2": "projects/QR-Goats_LoginPage.png",
+            "image3": "projects/QR-Goats_HomePage.png",
+            "image4": "projects/QR-Goats_NotificationsPage.png",
+            "alt": "Project Image",
+            "title": "QR-Goats",
+            "description": "Scan your digital QR code to clock in. You'll also be able to report sickness and lateness through this app. This will be utilized by the students of the Software Developer program at Scalda.",
+            "pageDescription": "The app is built using Java, Hibernate, and Struts2. With it, students can easily clock in and out by scanning a QR code. They can also report if they're sick or running late right in the app. It's all designed to make attendance tracking simple and hassle-free for students in Scalda's Software Developer program.",
+            "labels": "Java, Hibernate, Struts2, SQL, JavaScript, HTML/CSS, Bootstrap",
+            "link1": {
+                "name": "QR-Goats",
+                "link": "https://pasimo.delphinity.nl/qrgoats/login"
+            }
+        },
+        {
+            "image": "projects/PokemonGame_Thumbnail.png",
+            "alt": "Project Image",
+            "title": "Pokemon Game",
+            "description": "This is the Pokemon Game project. At the start of the game you set a name and choose your starter Pokemon. Then you have multiple options to choose from.",
+            "pageDescription": "In this game, players begin by entering their name and selecting their starter Pokemon. Once set up, players have a variety of options to explore and engage with within the game environment.",
+            "labels": "Java, OOP",
+            "link1": {
+                "name": "Github",
+                "link": "https://github.com/Milanvanderburgh/PokemonGame"
+            }
+        }
+    ]
+}
