@@ -65,7 +65,7 @@ function App({ currentPage, setCurrentPage }) {
         <div className="col-lg-6 d-flex flex-column justify-content-center gap-5">
           <h1 className='title'>Achievement is built on <span className='mainColor fst-italic'>dedication</span> {currentPage.pageName} </h1>
           <span>
-            <p className='largeText'>Hello, I am Jesper van der Burgh a professional software developer!</p>
+            <p className='largeText'>Hello, I am Jesper vd tollie van der Burgh a professional software developer!</p>
             <p>I am 19 years old and live in Zeeland. I work critically and enjoy helping others. I'm currently studying to become a Software Developer because I love coding. My goal is to become a skilled Software Developer and create anything I need. My main hobbies are gaming, watching films, partying with friends, and going to the gym.</p>
           </span>
           <StyledButton text="Let's talk" onClick={() => contactPage.current.scrollIntoView({ behavior: 'smooth' })} />
