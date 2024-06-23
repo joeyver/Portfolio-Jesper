@@ -103,7 +103,7 @@ function App({ currentPage, setCurrentPage }) {
   <h2 >About Me</h2>
         <div className="row">
           <div className="col-md-4">
-            <img src="public\images\Me.jpeg" alt="Profile" className="img-fluid rounded-circle" />
+            <img src="images\Me.jpeg" alt="Profile" className="img-fluid rounded-circle" />
           </div>
           <div className="col-md-8">
             <p>
