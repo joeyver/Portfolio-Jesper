@@ -1,9 +1,11 @@
 import React from 'react';
 
-const StyledButton = ({ className, onClick, text }) => {
+function StyledButton({ text, onClick, className }) {
   return (
-    <button className={`styledButton fw-bold ${className}`} onClick={onClick}>{text}</button>
+    <button className={`btn btn-secondary`} onClick={onClick}>
+      {text}
+    </button>
   );
-};
+}
 
-export default StyledButton ;
+export default StyledButton;

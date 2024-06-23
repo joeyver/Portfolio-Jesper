@@ -1,10 +1,11 @@
 // -- Variables --
-$mainColor: #49C5B6;
-$secondaryColor: #FF9398;
+$mainColor: black;
+$secondaryColor: black;
 $largeText: 1.5rem;
 $pagePadding: 200px;
 $shadowSize: 8px;
 $transition: all 0.2s ease;
+$aboutHeadingPaddingLeft: 135px;
 
 // Image
 $imageHeight: 460px;
@@ -17,9 +18,21 @@ $mainPictureRotation: 13deg;
 
 // Global styles
 * {
-  color: white;
+  color: black;
+
+}
+#socials .fa-icon {
+  margin-right: 10px; /* Adjust the spacing as needed */
 }
 
+#socials .fa-icon:last-child {
+  margin-right: 0; /* Remove margin from the last icon */
+}
+.aboutHeading {
+  padding-left: $aboutHeadingPaddingLeft;
+  font-size: 2rem; // Adjust the font size as needed
+  color: $mainColor;
+}
 .mainColor {
   color: $mainColor;
 }
@@ -57,7 +70,9 @@ $mainPictureRotation: 13deg;
   box-shadow: 0px 0px 0px 4px white;
   // outline: solid white 4px;
 }
-
+.btn {
+  color: #74552f;
+}
 .line {
   border-radius: $imageRadius;
   opacity: 1;
@@ -272,7 +287,6 @@ body {
 #contactPage input,
 #contactPage textarea {
   width: 100%;
-  background-color: black;
   border: solid 2px white;
   border-radius: 5px;
   padding: 5px;

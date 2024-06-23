@@ -1,18 +1,18 @@
-import React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
+
 import StyledButton from './components/StyledButton';
 import ProjectElement from './components/ProjectElement';
-import AboutElement from './components/AboutElement';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane, faUser, faPersonHiking, faMedal, faHouse, faHammer, faEnvelope, faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane, faUser, faHammer, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithubSquare, faInstagramSquare, faLinkedin, faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
 import data from './data.json';
 
 function App({ currentPage, setCurrentPage }) {
   const user = data.user;
-  const settings = data.settings
+  const settings = data.settings;
   const projects = data.projects;
 
   const homePage = useRef(null);
@@ -22,14 +22,14 @@ function App({ currentPage, setCurrentPage }) {
 
   const [activeSection, setActiveSection] = useState(null);
   const [viewAll, setViewAll] = useState(false);
-  const [viewOthers, setViewOthers] = useState(false);
+  const [navColor, setNavColor] = useState('#C19770');
 
-  const hasOtherProjects = projects.some(project => project.type !== undefined);
+
   useEffect(() => {
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.2,
+      threshold: 0.1,
     };
 
     const observer = new IntersectionObserver(handleIntersection, options);
@@ -50,107 +50,138 @@ function App({ currentPage, setCurrentPage }) {
     });
   };
 
+  const scrollToSection = (sectionRef) => {
+    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleColorChange = (color) => {
+    document.documentElement.style.setProperty('--background', color);
+  };
+
   return (
     <>
       {/* Navigation */}
-      <div id="navigation" className="d-flex flex-column justify-content-between gap-4 w-auto position-fixed top-50 mt-3">
-        <button className={activeSection === 'homePage' ? 'active' : ''} onClick={() => homePage.current.scrollIntoView({ behavior: 'smooth' })}><FontAwesomeIcon icon={faHouse} fontSize={30} /></button>
-        <button className={activeSection === 'aboutPage' ? 'active' : ''} onClick={() => aboutPage.current.scrollIntoView({ behavior: 'smooth' })}><FontAwesomeIcon icon={faCircleUser} fontSize={30} /></button>
-        <button className={activeSection === 'projectsPage' ? 'active' : ''} onClick={() => projectsPage.current.scrollIntoView({ behavior: 'smooth' })}><FontAwesomeIcon icon={faHammer} fontSize={30} /></button>
-        <button className={activeSection === 'contactPage' ? 'active' : ''} onClick={() => contactPage.current.scrollIntoView({ behavior: 'smooth' })}><FontAwesomeIcon icon={faEnvelope} fontSize={30} /></button>
-      </div>
-
-      {/* Home */}
-      <div ref={homePage} id='homePage' className="page row">
-        <div className="col-lg-6 d-flex flex-column justify-content-center gap-5">
-          <h1 className='title'>Achievement is built on <span className='mainColor fst-italic'>dedication</span> {currentPage.pageName} </h1>
-          <span>
-            <p className='largeText'>Hello, I am Jesper vd tollie van der Burgh a professional software developer!</p>
-            <p>I am 19 years old and live in Zeeland. I work critically and enjoy helping others. I'm currently studying to become a Software Developer because I love coding. My goal is to become a skilled Software Developer and create anything I need. My main hobbies are gaming, watching films, partying with friends, and going to the gym.</p>
-          </span>
-          <StyledButton text="Let's talk" onClick={() => contactPage.current.scrollIntoView({ behavior: 'smooth' })} />
-        </div>
-        <div className="col-lg-6 d-flex flex-column justify-content-center align-items-end">
-          <div className="imageContainer position-relative">
-            <img className='mainPicture position-absolute' src="images/MainPicture.png" alt="main" />
-            <div className="mainPictureShadow position-absolute"></div>
+      <nav className="navbar navbar-expand-lg navbar-dark fixed-top" style={{ backgroundColor: navColor }}>
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">Portfolio</a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <a className="nav-link" onClick={() => scrollToSection(homePage)}>Home</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" onClick={() => scrollToSection(aboutPage)}>About</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" onClick={() => scrollToSection(projectsPage)}>Projects</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" onClick={() => scrollToSection(contactPage)}>Contact</a>
+              </li>
+            </ul>
           </div>
         </div>
-        <hr className="line position-absolute"></hr>
-      </div>
+      </nav>
 
-      {/* About me */}
-      <div ref={aboutPage} id='aboutPage' className="page">
-        <h1 className='text-center title'>About me</h1>
-        <div className="row justify-content-between position-relative gap-5">
-          <hr className="line lineTop position-absolute"></hr>
-          <AboutElement icon={faUser} title="Myself" description="Learn more about my hobbies and teamroles." onClick={() => setCurrentPage("Myself")} />
-          <AboutElement icon={faPersonHiking} title="Experience" description="Find out why I chose this career path and how it is going so far." onClick={() => setCurrentPage("Experience")} />
-          <AboutElement icon={faMedal} title="Skills" description="Find out what kinds of skills I posess." onClick={() => setCurrentPage("Skills")} />
-          <hr className="line lineBottom position-absolute"></hr>
+      {/* Home Section */}
+      <section ref={homePage} id="homePage" className="container-fluid d-flex align-items-center justify-content-center vh-100 text-center text-white">
+        <div>
+          <h1>Welkom op mijn Portfolio</h1>
+          <p>Hi, Ik ben Jesper van der Tol. En afgestudeerde Software Developer.</p>
         </div>
-      </div>
+      </section>
 
-      {/* Projects */}
-      <div ref={projectsPage} id='projectsPage' className="page position-relative">
-        <h1 className='text-center title'>Projects</h1>
-        <div className="row gap-5 justify-content-center">
-          {projects.slice(0, viewAll ? projects.length : settings.maxProjects).filter(project => viewOthers || project.type === undefined).map((project, index) => (
-            <ProjectElement
-              key={index}
-              project={project}
-              setCurrentPage={() => setCurrentPage(index)}
-            />
+      {/* About Section */}
+      <section ref={aboutPage} id="aboutPage" className="container my-5">
+        <br></br>
+         <br></br>
+          <br></br>
+           <br></br>
+  <h2 >About Me</h2>
+        <div className="row">
+          <div className="col-md-4">
+            <img src="public\images\Me.jpeg" alt="Profile" className="img-fluid rounded-circle" />
+          </div>
+          <div className="col-md-8">
+            <p>
+Mijn naam is Jesper van der Tol, ik ben 20 jaar oud en een student en softwareontwikkelaar woonachtig in Tilburg, oorspronkelijk uit Vlissingen. Ik heb een passie voor softwareontwikkeling en ben voortdurend op zoek naar manieren om mijn vaardigheden te verbeteren en op de hoogte te blijven van de nieuwste trends in de industrie.            </p>
+            <p>
+Ik zou mezelf beschrijven als rustig, ordelijk, onafhankelijk en proactief. Ik haal veel plezier uit mijn werk en geloof in de kracht van zowel teamwork als zelfstandig werken. Mijn sterke planningsvaardigheden zorgen ervoor dat ik mijn taken efficiënt beheer.            </p>
+            <p>
+Ik heb ervaring met verschillende programmeertalen, waaronder HTML/CSS, SQL, JavaScript en Java. Ik heb projecten voltooid zoals een webshop voor Smulderstextiel en een incheck- en absente controlesysteem genaamd "Pasimo" als onderdeel van mijn schoolcurriculum. Mijn professionele ervaring omvat een stage bij Estrategy B.V., waar ik heb bijgedragen aan de ontwikkeling en het beheer van digitale projecten.            </p>
+            <p>         
+               Momenteel volg ik een niveau 4 opleiding in Software Development aan Scalda in Vlissingen, die ik naar verwachting in 2025 zal afronden. Naast mijn studie heb ik gewerkt in verschillende klantenservice- en operationele functies, waardoor ik mijn interpersoonlijke en organisatorische vaardigheden verder heb kunnen ontwikkelen.
+</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section ref={projectsPage} id="projectsPage" className="container my-5">
+         <br></br>
+          <br></br>
+           <br></br>
+        <h2>My Projects</h2>
+        <div className="row">
+          {projects.slice(0, viewAll ? projects.length : settings.maxProjects).map((project, index) => (
+            <ProjectElement key={index} project={project} />
           ))}
         </div>
-        <div className="d-flex">
-          {projects.length != settings.maxProjects && !viewOthers ? <StyledButton text={viewAll ? "View less" : "View all"} className="px-5 mx-auto mt-4" onClick={() => setViewAll(!viewAll)} /> : ""}
-          {viewAll && hasOtherProjects ? <StyledButton text={viewOthers ? "View related projects" : "View non related projects"} className="px-5 mx-auto mt-4" onClick={() => setViewOthers(!viewOthers)} /> : ""}
-        </div>
-        <hr className="line lineLeft position-absolute"></hr>
-        <hr className="line lineRight position-absolute"></hr>
-      </div>
+      
+      </section>
 
-      {/* Contact */}
-      <div ref={contactPage} id='contactPage' className="page row justify-content-between">
-        <div className="col-md-4 my-auto px-2 text-center">
-          <FontAwesomeIcon icon={faPaperPlane} fontSize={200} className='mb-4' />
-          <span className='text-start'>
-            <h1>Get in touch</h1>
-            <h5>I'd love to hear from you!</h5>
-          </span>
-          <hr />
-          <div id='socials' className="d-flex justify-content-between px-5 mt-5">
-            <FontAwesomeIcon icon={faLinkedin} fontSize={50} onClick={() => window.open(user.linkedIn, '_blank')} />
-            <FontAwesomeIcon icon={faGithubSquare} fontSize={50} onClick={() => window.open(user.github, '_blank')} />
-            <FontAwesomeIcon icon={faTwitterSquare} fontSize={50} onClick={() => window.open(user.twitter, '_blank')} />
-            <FontAwesomeIcon icon={faInstagramSquare} fontSize={50} onClick={() => window.open(user.instagram, '_blank')} />
+      {/* Contact Section */}
+         <section ref={contactPage} id="contactPage" className="container my-5">
+        <h2>Contact</h2>
+        <div className="row">
+          <div className="col-md-6 mb-4">
+            <h5>Stuur een Email en neem contact</h5>
+          </div>
+           <div id='socials' className="d-flex mt-3">
+              <FontAwesomeIcon icon={faLinkedin} fontSize={40} className="fa-icon me-3" onClick={() => window.open(user.linkedIn, '_blank')} />
+              <FontAwesomeIcon icon={faInstagramSquare} fontSize={40} className="fa-icon me-3" onClick={() => window.open(user.instagram, '_blank')} />
+            </div>
+          <div className="col-md-6">
+            <form>
+              <div className="mb-3">
+                <label htmlFor="nameInput" className="form-label">Naam</label>
+                <input type="text" className="form-control" id="nameInput" />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="subjectInput" className="form-label">Onderwerp</label>
+                <input type="text" className="form-control" id="subjectInput" />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="messageInput" className="form-label">Bschrijving</label>
+                <textarea className="form-control" id="messageInput" rows="5"></textarea>
+              </div>
+              <StyledButton text='Send' onClick={() => {
+                const nameInput = document.getElementById('nameInput');
+                const subjectInput = document.getElementById('subjectInput');
+                const messageInput = document.getElementById('messageInput');
+
+                const name = encodeURIComponent(nameInput.value);
+                const subject = encodeURIComponent(subjectInput.value);
+                const message = encodeURIComponent(messageInput.value);
+
+                const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${user.email}&su=${subject}&body=From ${name},%0A%0A${message}`;
+
+                window.open(mailtoLink, '_blank');
+              }} />
+            </form>
           </div>
         </div>
-        <div className="col-md-6 my-auto">
-          <label>Name</label>
-          <input id='nameInput' className='mb-3' type="text" />
-          <label>Subject</label>
-          <input id='subjectInput' className='mb-3' type="text" />
-          <label>Message</label>
-          <textarea id='messageInput' type="text" rows={5} />
-          <StyledButton className="float-end mt-4" text='Send' onClick={() => {
-            const nameInput = document.getElementById('nameInput');
-            const subjectInput = document.getElementById('subjectInput');
-            const messageInput = document.getElementById('messageInput');
+      </section>
 
-            const name = encodeURIComponent(nameInput.value);
-            const subject = encodeURIComponent(subjectInput.value);
-            const message = encodeURIComponent(messageInput.value);
-
-            const mailtoLink = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${user.email}&su=${subject}&body=From ${name},%0A%0A${message}`;
-
-            window.open(mailtoLink, '_blank');
-          }} />
-        </div>
-      </div>
+      {/* Footer */}
+      <footer className=" text-white text-center py-3">
+        <p>&copy; {new Date().getFullYear()} Jesper van der Tol. All Rights Reserved.</p>
+      </footer>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
