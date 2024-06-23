@@ -89,7 +89,7 @@ function App({ currentPage, setCurrentPage }) {
       {/* Home Section */}
       <section ref={homePage} id="homePage" className="container-fluid d-flex align-items-center justify-content-center vh-100 text-center text-white">
         <div>
-          <h1>Welkom op mijn Portfolio</h1>
+          <h1>Jespers porfolio</h1>
           <p>Hi, Ik ben Jesper van der Tol. En afgestudeerde Software Developer.</p>
         </div>
       </section>
@@ -103,7 +103,7 @@ function App({ currentPage, setCurrentPage }) {
   <h2 >About Me</h2>
         <div className="row">
           <div className="col-md-4">
-            <img src="images\Me.jpeg" alt="Profile" className="img-fluid rounded-circle" />
+            <img src="images\Me.jpeg" alt="Profile" className="img-fluid rounded-circle" loading="lazy"/>
           </div>
           <div className="col-md-8">
             <p>
